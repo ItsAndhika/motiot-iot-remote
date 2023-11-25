@@ -14,7 +14,7 @@ export default function Container() {
 			},
 		})
 			.then((response) => response.json())
-			.then((data) => console.log(data));
+			.then((data) => setLampStatus(data.status));
 	}, []);
 
 	const handleToggle = async () => {
@@ -22,7 +22,7 @@ export default function Container() {
 	};
 
 	return (
-		<main className="w-full h-full flex flex-col justify-center items-center gap-10 bg-white/20 rounded-3xl backdrop-blur-lg shadow-2xl">
+		<main className="w-11/12 h-[90vh] mx-auto flex flex-col justify-center items-center gap-10 bg-white/20 rounded-3xl backdrop-blur-lg shadow-2xl">
 			<h1 className="text-center text-2xl font-bold bg-gradient-to-br from-[#434343] to-black text-transparent bg-clip-text">
 				Lamp Control
 			</h1>
