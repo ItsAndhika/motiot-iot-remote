@@ -6,36 +6,19 @@ export default function Container() {
 	const [lampStatus, setLampStatus] = useState<boolean>(false);
 	const [log, setLog] = useState<string>("");
 
-	const sendRequestToESP32 = async (
-		url: string,
-		method: string = "GET",
-		data: any
-	) => {
-		try {
-			const response = await fetch(url, {
-				method,
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: data ? JSON.stringify(data) : null,
-			});
-
-			if (!response.ok) {
-				throw new Error(`Something went wrong when send request to ESP32`);
-			}
-
-			return response.json();
-		} catch (error) {
-			console.error(error);
-		}
-	};
+	useEffect(() => {
+		fetch("https://motiot/api/update-status", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => console.log(data));
+	}, []);
 
 	const handleToggle = async () => {
 		setIsAutomatic((prev: boolean) => !prev);
-		const response = await sendRequestToESP32("/api/setMode", "POST", {
-			automatic: isAutomatic,
-		});
-		console.log(response);
 	};
 
 	return (
