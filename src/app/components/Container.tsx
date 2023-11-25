@@ -7,10 +7,9 @@ export default function Container() {
 	const [log, setLog] = useState<string>("");
 
 	useEffect(() => {
-		const status = localStorage.getItem("status");
-		console.log(status);
-
 		setInterval(() => {
+			const status = localStorage.getItem("status");
+			console.log(status);
 			setLampStatus(status as string);
 		}, 1000);
 	}, []);
