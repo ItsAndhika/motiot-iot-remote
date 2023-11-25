@@ -3,18 +3,16 @@ import React, { useState, useEffect } from "react";
 
 export default function Container() {
 	const [isAutomatic, setIsAutomatic] = useState<boolean>(true);
-	const [lampStatus, setLampStatus] = useState<boolean>(false);
+	const [lampStatus, setLampStatus] = useState<string>("");
 	const [log, setLog] = useState<string>("");
 
 	useEffect(() => {
-		fetch("https://motiot/api/update-status", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => setLampStatus(data.status));
+		const status = localStorage.getItem("status");
+		console.log(status);
+
+		setInterval(() => {
+			setLampStatus(status as string);
+		}, 1000);
 	}, []);
 
 	const handleToggle = async () => {
@@ -26,9 +24,7 @@ export default function Container() {
 			<h1 className="text-center text-2xl font-bold bg-gradient-to-br from-[#434343] to-black text-transparent bg-clip-text">
 				Lamp Control
 			</h1>
-			<p className="text-lg font-semibold">
-				Status : {lampStatus ? "On" : "Off"}
-			</p>
+			<p className="text-lg font-semibold">Status : {lampStatus}</p>
 			<button
 				onClick={handleToggle}
 				className="px-3 py-2 rounded-full bg-gradient-to-br from-[#434343] to-black text-white font-semibold text-xl transition-all duration-1000 hover:scale-105"
