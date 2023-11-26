@@ -33,7 +33,7 @@ export default function Container() {
 			</h1>
 			<p className="text-lg font-semibold">
 				Status :{" "}
-				{lampStatus.length
+				{lampStatus.length != 0
 					? lampStatus[0].status
 					: "The microcontroller is off"}
 			</p>
