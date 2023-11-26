@@ -13,10 +13,9 @@ export default function Container() {
 			})
 				.then((response) => response.json())
 				.then((log) => {
-					console.log(log[0]);
 					setLampStatus(log[0].status);
 				});
-		}, 1);
+		}, 100);
 	}, []);
 
 	const handleToggle = async () => {
