@@ -7,14 +7,16 @@ export default function Container() {
 	const [log, setLog] = useState<string>("");
 
 	useEffect(() => {
-		fetch("https://motiot.vercel.app/api/get-log", {
-			next: { revalidate: 1 },
-		})
-			.then((response) => response.json())
-			.then((log) => {
-				console.log(log[0]);
-				setLampStatus(log[0].status);
-			});
+		setInterval(() => {
+			fetch("https://motiot.vercel.app/api/get-log", {
+				next: { revalidate: 1 },
+			})
+				.then((response) => response.json())
+				.then((log) => {
+					console.log(log[0]);
+					setLampStatus(log[0].status);
+				});
+		}, 1000);
 	}, []);
 
 	const handleToggle = async () => {
