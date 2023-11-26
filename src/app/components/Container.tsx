@@ -4,18 +4,17 @@ import React, { useState, useEffect } from "react";
 export default function Container() {
 	const [isAutomatic, setIsAutomatic] = useState<boolean>(true);
 	const [lampStatus, setLampStatus] = useState<string>("");
-	const [log, setLog] = useState<string>("");
 
 	useEffect(() => {
-		setInterval(() => {
-			fetch("https://motiot.vercel.app/api/get-log", {
-				next: { revalidate: 1 },
-			})
-				.then((response) => response.json())
-				.then((log) => {
-					setLampStatus(log[0].status);
-				});
-		}, 100);
+		// setInterval(() => {
+		fetch("https://motiot.vercel.app/api/get-log", {
+			next: { revalidate: 1 },
+		})
+			.then((response) => response.json())
+			.then((log) => {
+				setLampStatus(log[0].status);
+			});
+		// }, 100);
 	}, []);
 
 	const handleToggle = async () => {
