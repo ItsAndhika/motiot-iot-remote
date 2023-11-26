@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import "@/utils/database";
 import { Log } from "@/models/Log";
 
 export async function POST(request: Request) {

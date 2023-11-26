@@ -1,9 +1,11 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { db } from "@/lib/database";
 
-export const Log = mongoose.model(
-	"Motiot",
-	new mongoose.Schema({
-		status: String,
-		lightValue: Number,
-	})
-);
+const logSchema = new Schema({
+	status: String,
+	lightValue: Number,
+});
+
+// mongoose.models = {};
+
+export const Log = db.model("log", logSchema);

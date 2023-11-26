@@ -1,7 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import "@/utils/database";
-import { Log } from "@/models/Log";
 
 export default function Container() {
 	const [isAutomatic, setIsAutomatic] = useState<boolean>(true);
@@ -9,10 +7,14 @@ export default function Container() {
 	const [log, setLog] = useState<string>("");
 
 	useEffect(() => {
-		setInterval(async () => {
-			const result = await Log.find();
-			console.log(result);
-		}, 1000);
+		fetch("http://localhost:3000/api/get-log", {
+			next: { revalidate: 1 },
+		})
+			.then((response) => response.json())
+			.then((log) => {
+				console.log(log[0]);
+				setLampStatus(log[0].status);
+			});
 	}, []);
 
 	const handleToggle = async () => {
