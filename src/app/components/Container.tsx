@@ -11,15 +11,15 @@ export default function Container() {
 	const [lampStatus, setLampStatus] = useState<Array<lampStatus>>([]);
 
 	useEffect(() => {
-		// setInterval(() => {
-		fetch("https://motiot.vercel.app/api/get-log", {
-			cache: "no-store",
-		})
-			.then((response) => response.json())
-			.then((log) => {
-				setLampStatus(log);
-			});
-		// }, 100);
+		setInterval(() => {
+			fetch("https://motiot.vercel.app/api/get-log", {
+				cache: "no-store",
+			})
+				.then((response) => response.json())
+				.then((log) => {
+					setLampStatus(log);
+				});
+		}, 100);
 	}, []);
 
 	const handleToggle = async () => {
