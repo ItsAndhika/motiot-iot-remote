@@ -6,13 +6,7 @@ export default function Container() {
 	const [lampStatus, setLampStatus] = useState<string>("");
 	const [log, setLog] = useState<string>("");
 
-	useEffect(() => {
-		setInterval(() => {
-			const status = localStorage.getItem("status");
-			console.log(status);
-			setLampStatus(status as string);
-		}, 1000);
-	}, []);
+	useEffect(() => {}, []);
 
 	const handleToggle = async () => {
 		setIsAutomatic((prev: boolean) => !prev);
