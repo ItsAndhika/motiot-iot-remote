@@ -16,7 +16,7 @@ export default function Container() {
 					console.log(log[0]);
 					setLampStatus(log[0].status);
 				});
-		}, 1000);
+		}, 1);
 	}, []);
 
 	const handleToggle = async () => {
