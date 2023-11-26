@@ -13,7 +13,7 @@ export default function Container() {
 	useEffect(() => {
 		// setInterval(() => {
 		fetch("https://motiot.vercel.app/api/get-log", {
-			next: { revalidate: 1 },
+			cache: "no-store",
 		})
 			.then((response) => response.json())
 			.then((log) => {
