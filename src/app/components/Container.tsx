@@ -1,9 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
+type lampStatus = {
+	status: string;
+	lightValue: number;
+};
+
 export default function Container() {
 	const [isAutomatic, setIsAutomatic] = useState<boolean>(true);
-	const [lampStatus, setLampStatus] = useState<string>("");
+	const [lampStatus, setLampStatus] = useState<Array<lampStatus>>([]);
 
 	useEffect(() => {
 		// setInterval(() => {
@@ -12,7 +17,7 @@ export default function Container() {
 		})
 			.then((response) => response.json())
 			.then((log) => {
-				setLampStatus(log[0].status);
+				setLampStatus(log);
 			});
 		// }, 100);
 	}, []);
@@ -26,7 +31,12 @@ export default function Container() {
 			<h1 className="text-center text-2xl font-bold bg-gradient-to-br from-[#434343] to-black text-transparent bg-clip-text">
 				Lamp Control
 			</h1>
-			<p className="text-lg font-semibold">Status : {lampStatus}</p>
+			<p className="text-lg font-semibold">
+				Status :{" "}
+				{lampStatus.length
+					? lampStatus[0].status
+					: "The microcontroller is off"}
+			</p>
 			<button
 				onClick={handleToggle}
 				className="px-3 py-2 rounded-full bg-gradient-to-br from-[#434343] to-black text-white font-semibold text-xl transition-all duration-1000 hover:scale-105"
