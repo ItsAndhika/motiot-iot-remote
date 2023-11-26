@@ -7,7 +7,7 @@ export default function Container() {
 	const [log, setLog] = useState<string>("");
 
 	useEffect(() => {
-		fetch("http://localhost:3000/api/get-log", {
+		fetch("https://motiot.vercel.app/api/get-log", {
 			next: { revalidate: 1 },
 		})
 			.then((response) => response.json())
