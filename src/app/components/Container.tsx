@@ -12,7 +12,7 @@ export default function Container() {
 
 	useEffect(() => {
 		setInterval(() => {
-			fetch("http://motiot.vercel.app/api/get-log", {
+			fetch("https://motiot.vercel.app/api/get-log", {
 				next: { revalidate: 1000 },
 			})
 				.then((response) => response.json())
