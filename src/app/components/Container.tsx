@@ -12,8 +12,8 @@ export default function Container() {
 
 	useEffect(() => {
 		setInterval(() => {
-			fetch("https://motiot.vercel.app/api/get-log", {
-				cache: "no-store",
+			fetch("http://localhost:3000/api/get-log", {
+				next: { revalidate: 1000 },
 			})
 				.then((response) => response.json())
 				.then((log) => {
@@ -32,7 +32,7 @@ export default function Container() {
 				Lamp Control
 			</h1>
 			<p className="text-lg font-semibold">
-				Status :{" "}
+				Status :
 				{lampStatus.length != 0
 					? lampStatus[0].status
 					: "The microcontroller is off"}
