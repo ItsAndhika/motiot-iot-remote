@@ -8,7 +8,12 @@ interface ToggleAutomaticButtonProps {
 export default function ToggleAutomaticButton({
 	isAutomatic,
 }: ToggleAutomaticButtonProps) {
-	const [isAutomaticMode, setIsAutomaticMode] = useState<boolean>(isAutomatic);
+	const [isAutomaticMode, setIsAutomaticMode] = useState<boolean | undefined>(
+		isAutomatic
+	);
+
+	console.log("isAutomatic: " + isAutomatic);
+	console.log("isAutomaticMode: " + isAutomaticMode);
 
 	const handleSetFalse = async () => {
 		const response = await fetch("/api/set-automatic-mode", {

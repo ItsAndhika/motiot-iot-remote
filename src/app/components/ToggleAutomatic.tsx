@@ -1,13 +1,13 @@
 import ToggleAutomaticButton from "./ToggleAutomaticButton";
 
 interface ToggleAutomaticProps {
-	isAutomaticPromise: Response;
+	response: Response;
 }
 
 export default async function ToggleAutomatic({
-	isAutomaticPromise,
+	response,
 }: ToggleAutomaticProps) {
-	const result = await isAutomaticPromise.json();
+	const result = await response.json();
 	const isAutomatic = result[0].isAutomatic;
 
 	return (
