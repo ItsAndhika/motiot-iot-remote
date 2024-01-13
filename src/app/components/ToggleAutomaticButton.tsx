@@ -55,6 +55,11 @@ export default function ToggleAutomaticButton({
 					Switch to automatic
 				</button>
 			)}
+			<div className="flex">
+				<span>On</span>
+				<div></div>
+				<span>Off</span>
+			</div>
 		</>
 	);
 }

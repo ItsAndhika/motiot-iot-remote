@@ -13,11 +13,6 @@ export default async function ToggleAutomatic({
 	return (
 		<>
 			<ToggleAutomaticButton isAutomatic={isAutomatic} />
-			<div className={`${!isAutomatic ? "visible" : "invisible"} flex`}>
-				<span>On</span>
-				<div></div>
-				<span>Off</span>
-			</div>
 		</>
 	);
 }
