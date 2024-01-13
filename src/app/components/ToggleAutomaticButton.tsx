@@ -8,9 +8,7 @@ interface ToggleAutomaticButtonProps {
 export default function ToggleAutomaticButton({
 	isAutomatic,
 }: ToggleAutomaticButtonProps) {
-	const [isAutomaticMode, setIsAutomaticMode] = useState<boolean | undefined>(
-		isAutomatic
-	);
+	const [isAutomaticMode, setIsAutomaticMode] = useState<boolean>(isAutomatic);
 
 	console.log("isAutomatic: " + isAutomatic);
 	console.log("isAutomaticMode: " + isAutomaticMode);
