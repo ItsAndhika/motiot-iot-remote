@@ -4,7 +4,7 @@ export default async function Container() {
 	const response = await fetch(
 		"https://motiot.vercel.app/api/get-automatic-mode",
 		{
-			next: { revalidate: 1 },
+			cache: "no-cache",
 		}
 	);
 
