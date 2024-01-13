@@ -40,7 +40,7 @@ export default function ToggleAutomaticButton({
 
 	return (
 		<>
-			{isAutomatic ? (
+			{isAutomaticMode ? (
 				<button
 					onClick={handleSetFalse}
 					className="px-3 py-2 rounded-full bg-gradient-to-br from-[#434343] to-black text-white font-semibold text-xl transition-all duration-1000 hover:scale-105"
