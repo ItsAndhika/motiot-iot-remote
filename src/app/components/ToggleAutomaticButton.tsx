@@ -48,18 +48,20 @@ export default function ToggleAutomaticButton({
 					Switch to manual
 				</button>
 			) : (
-				<button
-					onClick={handleSetTrue}
-					className="px-3 py-2 rounded-full bg-gradient-to-br from-[#434343] to-black text-white font-semibold text-xl transition-all duration-1000 hover:scale-105"
-				>
-					Switch to automatic
-				</button>
+				<>
+					<button
+						onClick={handleSetTrue}
+						className="px-3 py-2 rounded-full bg-gradient-to-br from-[#434343] to-black text-white font-semibold text-xl transition-all duration-1000 hover:scale-105"
+					>
+						Switch to automatic
+					</button>
+					<div className="flex">
+						<span>On</span>
+						<div></div>
+						<span>Off</span>
+					</div>
+				</>
 			)}
-			<div className="flex">
-				<span>On</span>
-				<div></div>
-				<span>Off</span>
-			</div>
 		</>
 	);
 }
