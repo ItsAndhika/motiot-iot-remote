@@ -1,4 +1,6 @@
 "use client";
+import { useState } from "react";
+
 interface ToggleAutomaticButtonProps {
 	isAutomatic: boolean;
 }
@@ -6,6 +8,8 @@ interface ToggleAutomaticButtonProps {
 export default function ToggleAutomaticButton({
 	isAutomatic,
 }: ToggleAutomaticButtonProps) {
+	const [isAutomaticMode, setIsAutomaticMode] = useState<boolean>(isAutomatic);
+
 	const handleSetFalse = async () => {
 		const response = await fetch("/api/set-automatic-mode", {
 			method: "POST",
@@ -16,6 +20,7 @@ export default function ToggleAutomaticButton({
 			body: JSON.stringify({ isAutomatic: false }),
 		});
 		const result = await response.json();
+		setIsAutomaticMode(false);
 		console.log(result);
 	};
 
@@ -29,6 +34,7 @@ export default function ToggleAutomaticButton({
 			body: JSON.stringify({ isAutomatic: true }),
 		});
 		const result = await response.json();
+		setIsAutomaticMode(true);
 		console.log(result);
 	};
 
