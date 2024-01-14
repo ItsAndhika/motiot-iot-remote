@@ -12,7 +12,7 @@ export default function ToggleAutomatic() {
 	useEffect(() => {
 		fetch("/api/get-automatic-mode")
 			.then((data) => data.json())
-			.then((data) => setIsAutomatic(data));
+			.then((data) => setIsAutomatic(data[0].isAutomatic));
 	}, []);
 	// const result = await response.json();
 	// const isAutomatic = result[0].isAutomatic;
